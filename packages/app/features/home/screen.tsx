@@ -13,14 +13,10 @@ import {
 } from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { useState } from 'react'
-import { Platform } from 'react-native'
-import { useLink } from 'solito/navigation'
 
 export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
   const linkTarget = pagesMode ? '/pages-example-user' : '/user'
-  const linkProps = useLink({
-    href: `${linkTarget}/nate`,
-  })
+  const linkHref = `${linkTarget}/nate`
 
   return (
     <YStack flex={1} justify="center" items="center" gap="$8" p="$4" bg="$background">      
@@ -33,12 +29,8 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
         flexWrap="wrap"
         $sm={{ position: 'relative', t: 0 }}
       >
-        {Platform.OS === 'web' && (
-          <>
-            <SwitchRouterButton pagesMode={pagesMode} />
-            <SwitchThemeButton />
-          </>
-        )}
+        <SwitchRouterButton pagesMode={pagesMode} />
+        <SwitchThemeButton />
       </XStack>
 
       <YStack gap="$4">
@@ -55,7 +47,9 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
         <Separator />
       </YStack>
 
-      <Button {...linkProps}>Link to user</Button>
+      <Anchor href={linkHref} target="_self">
+        <Button>Link to user</Button>
+      </Anchor>
 
       <SheetDemo />
     </YStack>

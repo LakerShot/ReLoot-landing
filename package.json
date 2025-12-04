@@ -6,10 +6,6 @@
     "./packages/*"
   ],
   "scripts": {
-    "native": "cd apps/expo && yarn start",
-    "native:prebuild": "cd apps/expo && yarn prebuild",
-    "ios": "cd apps/expo && yarn ios",
-    "android": "cd apps/expo && yarn android",
     "watch": "ultra -r --no-pretty --concurrency 400 watch",
     "vercel:install": "yarn set version 3.5 && yarn install",
     "web": "yarn build && cd apps/next && yarn next",
@@ -28,9 +24,7 @@
   "resolutions": {
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-refresh": "^0.14.0",
-    "react-native-svg": "15.11.2",
-    "react-native-web": "~0.19.12"
+    "react-refresh": "^0.14.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.6",

@@ -36,14 +36,19 @@ module.exports = () => {
       ignoreBuildErrors: true,
     },
     transpilePackages: [
-      'solito',
       'react-native-web',
-      'expo-linking',
-      'expo-constants',
-      'expo-modules-core',
+      'react-native-svg',
     ],
     experimental: {
       scrollRestoration: true,
+    },
+    webpack: (config) => {
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        // Mock React Native modules for web
+        '@react-native/assets-registry/registry': 'react-native-web/dist/modules/AssetRegistry',
+      }
+      return config
     },
   }
 
